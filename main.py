@@ -40,9 +40,14 @@ class Card:
 
 class Ticket:
 
-    def __init__(self, seat_id, user, price):
-        self.seat_id = seat_id
+    def __init__(self, user, price, seat_number):
         self.user = user
         self.price = price
+        self.id = "".join([random.choice(string.ascii_letters) for i in range(8)])
+        self.seat_number = seat_number
+
+    def to_pdf(self):
+        pass
+
 
 
