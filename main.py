@@ -25,3 +25,24 @@ class Seat:
     def occupt(self):
         pass
 
+class Card:
+
+    database = "banking.db"
+
+    def __init__(self, type, number, csv, holder):
+        self.type = type
+        self.number = number
+        self.csv = csv
+        self.holder = holder
+
+    def validate(self):
+        pass
+
+class Ticket:
+
+    def __init__(self, seat_id, user, price):
+        self.seat_id = seat_id
+        self.user = user
+        self.price = price
+
+
