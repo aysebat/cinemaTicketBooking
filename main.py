@@ -8,7 +8,16 @@ class User:
         self.name = name
 
     def buy(self, seat, card):
-        pass
+        """ Buys teh ticket if the card is valid and the seat is free"""
+        if seat.is_free():
+            if card.validate(price=seat.get_price()):
+                seat.occupy()
+
+            else:
+                return "There was a problem with your card"
+        else:
+            return "Seat is taken"
+
 
 class Seat:
 
@@ -42,8 +51,13 @@ class Seat:
         else:
             return False
 
-    def occupt(self):
-        pass
+    def occupy(self):
+        connection=sqlite3.connect(self.database)
+        connection.execute("""
+        UPDATE "Seat" SET "taken" = ? WHERE "seat_id" = ?
+        """, [1, self.seat_id])
+        connection.commit()
+        connection.close()
 
 class Card:
 
