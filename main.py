@@ -56,7 +56,22 @@ class Card:
         self.holder = holder
 
     def validate(self):
-        pass
+        connection = sqlite3.connect(self.database)
+        cursor = connection.cursor()
+        cursor.execute("""
+        SELECT "balance" FROM "Card" WHERE "number" = ? and "cvc" =?
+        """, [self.number, self.cvc])
+        result = cursor.fetchall()
+
+        if result:
+            balance = result[0][0]
+            if balance >= result:
+                connection.execute("""
+                UPDATE "CARD" SET "balance" =?  WHERE "number" = ? and "cvc" =?
+                """, [balance-result, self.number, self.cvc])
+                connection.commit()
+                connection.close()
+                return True
 
 class Ticket:
 
