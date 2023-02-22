@@ -1,4 +1,5 @@
 import random
+import sqlite3
 import string
 
 class User:
@@ -11,7 +12,7 @@ class User:
 
 class Seat:
 
-    databasev = "cinema.db"
+    database = "cinema.db"
 
     def __init__(self, seat_id):
         self.seat_id = seat_id
@@ -20,7 +21,18 @@ class Seat:
         pass
 
     def is_free(self):
-        pass
+        """Check in database if the seat taken or not"""
+        connection = sqlite3.connect(self.database)
+        cursor = connection.cursor()
+        cursor.execute("""
+        SELECT "taken" from "Seat" WHERE "seat_id" = ?
+        """, [self.seat_id])
+        result = cursor.fetchall()[0][0]
+        #0: indicate the seat is not taken so it is free
+        if result == 0:
+            return True
+        else:
+            return False
 
     def occupt(self):
         pass
