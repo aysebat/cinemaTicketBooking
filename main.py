@@ -88,7 +88,7 @@ class Card:
             if balance >= price:
                 connection.execute("""
                 UPDATE "CARD" SET "balance" =?  WHERE "number" = ? and "cvc" =?
-                """, [balance - result, self.number, self.cvc])
+                """, [balance - price, self.number, self.cvc])
                 connection.commit()
                 connection.close()
                 return True
