@@ -1,0 +1,205 @@
+:root {
+  --color-primary: #ff3333 ;
+  --color-primary-light: #ff8080;
+  --color-primary-dark:  #cc0000;
+
+  --color-grey-light-1: #ff9999;
+  --color-grey-light-2: #ffb3b3;
+  --color-grey-light-3: #ffcccc;
+  --color-grey-light-4: #ffe6e6;
+
+  --color-grey-dark-1: #b30000;
+  --color-grey-dark-2: #990000;
+  --color-grey-dark-3: #800000;
+  --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3); }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    opacity: 60%;
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    opacity: 60%;
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+
+
+body {
+  box-sizing: border-box;
+  background-color: #E5E4E2;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;}
+
+
+.home {
+  height: 100vh;
+  background-image: linear-gradient(to right bottom,
+                                    rgba(255, 102, 102, 0.8),
+                                    rgba(204, 0, 0, 0.8)),
+                                    url(../image/home1.jpg);
+  background-size: cover;
+  background-position: top;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;}
+
+
+.heading-primary {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 8rem;
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: 2.0rem;
+  animation: moveInLeft 1s ease-out;
+  @media (max-width: 37.5em) {
+      .heading-primary{
+        letter-spacing: 1.2rem;
+        font-size: 4rem; } }}
+
+
+.heading-sub {
+  color: #EAFAF1;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: moveInRight 1s ease-out;}
+
+
+.container{
+  font-size: 3rem;
+  max-width: 120rem;
+  height: 100vh;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;}
+  @media (max-width: 37.5em) {
+     .container{
+        font-size: 2rem;}}
+
+
+
+.btn, .btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer; }
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.4); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, 0.4); }
+
+.btn--white {
+  background-color: #fff;
+  color: #777; }
+.btn--white::after {
+  background-color: #fff; }
+
+.btn--animated {
+  animation: moveInBottom 1s ease-out .75s;
+  animation-fill-mode: backwards; }
+
+h2 {
+  color: darkgray;
+  text-align: center;
+  font-size: 50px;}
+
+ input[type=text]{
+   width : 100%;
+   padding: 8px 8px;
+   margin: 10px 0;
+   border: 1px solid #ccc ;
+   border-radius: 4px;
+   box-sizing: border-box;}
+
+input[type=text]:focus {
+   width: 100%;}
+
+input[type=submit]{
+   width: 100%;
+   background-color: #50C878;
+   padding: 10px 10px;
+   color: white;
+   border: none;
+   border-radius: 6px;
+   border: none;
+   font-size: inherit;
+   cursor: pointer;}
+
+.result{
+   display: flex;
+   flex-direction: column;
+   margin: 10px 10px ;
+}
+
+.result-text {
+   font-size : 2rem;
+   display: flex;
+   flex-direction: column;
+}
+
+.result-col{
+    display: flex;
+    justify-content: center;
+}

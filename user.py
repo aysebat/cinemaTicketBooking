@@ -1,4 +1,4 @@
-from main import seat_id
+#from main import seat_id
 from ticket import Ticket
 
 
