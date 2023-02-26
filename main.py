@@ -3,7 +3,7 @@ from seat import Seat
 from user import User
 
 from flask import Flask, render_template
-from wtforms import Form
+from wtforms import Form, StringField
 from flask.views import MethodView
 
 app = Flask(__name__)
@@ -18,7 +18,26 @@ class HomePage(MethodView):
 class BookingPage(MethodView):
 
     def get(self):
-        return render_template('booking.html')
+        #Get the form from UserForm class
+        user_form = UserForm()
+        #define the variable nam userform in render_templete
+        #to use in html file
+        return render_template('booking.html', userform=user_form)
+
+class UserForm(Form):
+    name = StringField("Name: ")
+    seat = StringField("Seat Number: ")
+    card_type = StringField("Card Type: ")
+    card_number = StringField("Card Number: ")
+    card_cvc = StringField("Card Cvc Number: ")
+    card_holder = StringField("Card Holder Name: ")
+
+
+
+
+
+
+
 
 
 app.add_url_rule('/', view_func=HomePage.as_view("home_page"))
