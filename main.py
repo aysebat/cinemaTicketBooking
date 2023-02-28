@@ -3,7 +3,7 @@ from seat import Seat
 from user import User
 
 from flask import Flask, render_template
-from wtforms import Form, StringField
+from wtforms import Form, StringField, SubmitField
 from flask.views import MethodView
 
 app = Flask(__name__)
@@ -31,14 +31,7 @@ class UserForm(Form):
     card_number = StringField("Card Number: ")
     card_cvc = StringField("Card Cvc Number: ")
     card_holder = StringField("Card Holder Name: ")
-
-
-
-
-
-
-
-
+    button = SubmitField("Get Ticket!")
 
 app.add_url_rule('/', view_func=HomePage.as_view("home_page"))
 app.add_url_rule('/booking', view_func=BookingPage.as_view("booking_page"))
