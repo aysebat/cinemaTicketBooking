@@ -109,11 +109,13 @@ body {
   @media (max-width: 37.5em) {
      .container{
         font-size: 2rem;}}
+
 .form_row{
-  display: flex;
-  flex-direction: row;
-  align-items: space-between;
-  justify-content: center;}
+    color: gray;
+    margin-bottom: -1.5rem;
+ }
+
+
 
 
 .btn, .btn:link, .btn:visited {

@@ -25,12 +25,12 @@ class BookingPage(MethodView):
         return render_template('booking.html', userform=user_form)
 
 class UserForm(Form):
-    name = StringField("Name: ")
-    seat = StringField("Seat Number: ")
-    card_type = StringField("Card Type: ")
-    card_number = StringField("Card Number: ")
-    card_cvc = StringField("Card Cvc Number: ")
-    card_holder = StringField("Card Holder Name: ")
+    name = StringField("Name")
+    seat = StringField("Seat Number")
+    card_type = StringField("Card Type")
+    card_number = StringField("Card Number")
+    card_cvc = StringField("Card Cvc Number")
+    card_holder = StringField("Card Holder Name")
     button = SubmitField("Get Ticket!")
 
 app.add_url_rule('/', view_func=HomePage.as_view("home_page"))
