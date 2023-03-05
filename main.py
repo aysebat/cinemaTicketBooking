@@ -2,7 +2,7 @@ from card import Card
 from seat import Seat
 from user import User
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from wtforms import Form, StringField, SubmitField
 from flask.views import MethodView
 
@@ -18,11 +18,12 @@ class HomePage(MethodView):
 class BookingPage(MethodView):
 
     def get(self):
-        #Get the form from UserForm class
+        # Get the form from UserForm class
         user_form = UserForm()
-        #define the variable nam userform in render_templete
-        #to use in html file
+        # define the variable nam userform in render_templete
+        # to use in html file
         return render_template('booking.html', userform=user_form)
+
 
 class UserForm(Form):
     name = StringField("Name")
@@ -33,8 +34,24 @@ class UserForm(Form):
     card_holder = StringField("Card Holder Name")
     button = SubmitField("Get Ticket!")
 
+
+class ResultPage(MethodView):
+
+    def post(self):
+        userform = UserForm(request.form)
+        user = User(name=userform.name.data)
+        seat = Seat(seat_id=userform.seat.data)
+        card = Card(type=userform.card_type.data,
+                    number=userform.card_number.data,
+                    cvc=userform.card_cvc.data,
+                    holder=userform.card_holder.data)
+
+        return user.buy(seat=seat, card=card)
+
+
 app.add_url_rule('/', view_func=HomePage.as_view("home_page"))
 app.add_url_rule('/booking', view_func=BookingPage.as_view("booking_page"))
+app.add_url_rule('/results', view_func=ResultPage.as_view("result_page"))
 app.run(host='0.0.0.0', port='8000', debug=True)
 
 # if __name__ == "__main__":
@@ -47,9 +64,6 @@ app.run(host='0.0.0.0', port='8000', debug=True)
 #
 #     user = User(name=name)
 #     seat = Seat(seat_id=seat_id)
-#     card = Card(type=card_type,
-#                 number=card_number,
-#                 cvc=card_cvc,
-#                 holder=card_holder)
+#
 #
 #     print(user.buy(seat=seat, card=card))

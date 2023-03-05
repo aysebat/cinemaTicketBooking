@@ -8,11 +8,11 @@ class User:
         self.name = name
 
     def buy(self, seat, card):
-        """ Buys teh ticket if the card is valid and the seat is free"""
+        """ Buys the ticket if the card is valid and the seat is free"""
         if seat.is_free():
             if card.validate(price=seat.get_price()):
                 seat.occupy()
-                ticket = Ticket(user=self.name, price=seat.get_price(), seat_number=seat_id)
+                ticket = Ticket(user=self.name, price=seat.get_price(), seat_number=seat)
                 ticket.to_pdf()
                 return "Your payment successful"
 
